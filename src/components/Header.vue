@@ -11,9 +11,10 @@
         <slot name="right"></slot>
       </li>
     </ul>-->
+    <!--C:\wamp\www\clone0124\miyaxm-web\src\modules\User\Login-->
     <ul>
-      <li><!--<i class="iconfont  icon-fangdajing"></i>-->奶瓶</li>
-      <!--<i class="iconfont  icon-gengduo"></i>-->
+      <li><i class="iconfont  icon-fangdajing"></i>奶瓶</li>
+      <a href="http://localhost:8080/#/login"><i class="iconfont  icon-gengduo"></i></a>
     </ul>
   </div>
 </template>

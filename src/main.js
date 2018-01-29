@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 //导入vue
 import Vue from 'vue'
+import VueResource from 'vue-resource'
 //导入同目录下的App.vue,因为App.vue中暴露出来的名字是App  所以
 import App from './App'
 //导入同目录下的router文件夹下的index.js
@@ -12,13 +13,17 @@ import store from "./store"
 /* 全局引入插件 */
 import axios from 'axios'
 /* 导入公用组件 */
+
+/* 导入iconfont图标库 */
+import '@/assets/iconfont/iconfont.css'
 /* 导入公用的头部,在其他组件中只需要<lh-Header></lh-Header> */
 import lhHeader from '@/components/Header'
+import lhFooter from '@/components/Footer'
 import lhContent from '@/components/Content'
 import lhProList from '@/components/ProList'
 
 
-import {Button,Loadmore,Lazyload,Swipe, SwipeItem ,actionsheet} from "mint-ui"
+import {Button,Loadmore,Lazyload,Swipe, SwipeItem ,actionsheet,Navbar} from "mint-ui"
 import { TabContainer, TabContainerItem } from 'mint-ui';
 import { Cell } from 'mint-ui';
 import { Tabbar, TabItem } from 'mint-ui';
@@ -40,8 +45,12 @@ Vue.use(Lazyload); //使用插件
 Vue.component(Loadmore.name, Loadmore);
 Vue.component(Button.name,Button)
 
+Vue.component(Navbar.name, Navbar);
+Vue.component(TabItem.name, TabItem);
+Vue.use(VueResource)
 /* 全局注册公用组件 */
 Vue.component("lh-header",lhHeader)
+Vue.component("lh-footer",lhFooter)
 Vue.component("lh-content",lhContent)
 Vue.component("lh-pro-list",lhProList)
 
@@ -74,7 +83,7 @@ Vue.config.productionTip = false
 new Vue({
   el:"#app",
   data:{
-    listData:[]
+    userData:[]
   },
   mounted(){
     // this.$http.get("http://alimam.duapp.com/product/getList?linenumber=20&pageNum=2").then(res=>{
@@ -89,8 +98,10 @@ new Vue({
       //res.data 获取后端数据
       console.log(res)
   })*!/
-    axios.get("/loho").then(res=>{
-      console.log(res)
+    axios.get("/api/product/getUserData").then(res=>{
+      console.log(res)//{data: Array(3), status: 200, statusText: "OK", headers: {…}, config: {…}, …}
+      console.log(res.data)//[{…}, {…}, {…}]
+      console.log(res.data[0].username)//18787875687
   })
   }
 

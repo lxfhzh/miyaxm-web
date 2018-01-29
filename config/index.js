@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      "/loho": {
-        "target": "http://localhost:8000/api/product/getListData",
+      "/api": {
+        "target": "http://localhost:8000/api",
         "changeOrigin": true,
         "pathRewrite": {
-          "^/loho": ""
+          "^/api": ""
         }
       }
     },
