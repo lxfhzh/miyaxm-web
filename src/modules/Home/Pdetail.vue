@@ -4,13 +4,13 @@
     <table>
       <tr>
         <td>{{p_name}}</td>
-        <td>￥:{{price}}</td>
+        <td v-model="price">￥:{{price}}</td>
         <td>库存:{{total_number}}</td>
       </tr>
       <tr>
 
         <td><button @click="jian">-</button><input type="number" v-model="count"><button @click="jia">+</button></td>
-        <td>选了{{count}}个</td>
+        <td v-model="count">选了{{count}}个</td>
         <td>总价{{price * count}}</td>
         <td><button @click="cun">存</button></td>
         <td><button @click="qu">取</button></td>
@@ -118,10 +118,16 @@
 
       },
       cun(){
-        setCookie(this.p_name,this.count,1000*60)
+        /*var pid = this.pid;
+        this.$http.get('/api/product/cunGouwuche?pid='+pid)
+          .then(response => {
+            console.log(response)
+          }*/
+        console.log(222)
+
       },
       qu(){
-        console.log(getCookie(this.p_name))
+          console.log(1111)
       }
     }
 
